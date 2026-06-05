@@ -8,10 +8,10 @@ parity case per batch under ``<out>/NNNN_rule/`` containing:
   - inputs/suite_data.csv       (header from extracted column refs + sample rows)
   - tags.txt
 
-This version is stricter than the original corpus cleaner: it keeps only rules
-that look like valid Spark-SQL-style derive expressions, skips obviously broken
-or placeholder formulas, guarantees unique output columns within each case, and
-emits only full batches of ``--rules-per-case`` rules.
+This variant is intentionally conservative: it accepts only derive formulas
+that match a curated set of Spark-SQL-style patterns modeled after the valid
+examples in the provided corpus. The goal is stable, runnable parity cases, not
+maximum corpus coverage.
 """
 
 from __future__ import annotations
@@ -38,8 +38,6 @@ SAMPLE_VALUES = [
     "2024-01-15",
     "abc",
     "sample@example.com",
-    "2024-01-15 10:30:00",
-    "A-100",
 ]
 COLUMN_REF_RE = re.compile(r"`([^`]+)`")
 ADD_FORMULA_PREFIX_RE = re.compile(r"^\s*add\s+formula\b\s*", re.IGNORECASE)
@@ -49,75 +47,49 @@ NONDETERMINISTIC_FN_RE = re.compile(
     r"|\bunix_timestamp\s*\(\s*\)",
     re.IGNORECASE,
 )
-BAD_TOKEN_RE = re.compile(
-    r"(?:\$\{|\bDateTimeNow\s*\(|\bToday\b|;|\n\s*[A-Za-z_][A-Za-z0-9_]*\s*=)",
+BAD_SCRIPT_TOKEN_RE = re.compile(
+    r"(?:\$\{|;|\n\s*[A-Za-z_][A-Za-z0-9_]*\s*=|\bDateTimeNow\s*\(|\bToday\b)",
     re.IGNORECASE,
 )
-ONLY_LITERAL_TEXT_RE = re.compile(r"^[\s\w\-\.:/@#%&+,\u00A0-\uFFFF]+$")
 
-SAFE_FUNCTION_NAMES = {
-    "trim",
-    "ltrim",
-    "rtrim",
-    "upper",
-    "lower",
-    "initcap",
-    "proper",
-    "concat",
-    "concat_ws",
-    "substring",
-    "substr",
-    "substring_index",
-    "left",
-    "right",
-    "replace",
-    "regexp_replace",
-    "regexp_extract",
-    "split",
-    "starts_with",
-    "ends_with",
-    "contains",
-    "if",
-    "case",
-    "when",
-    "otherwise",
-    "char",
-    "index_of",
-    "locate",
-    "strip",
-    "remove_symbols",
-    "truncate_char",
-    "truncate_words",
-    "unbase64",
-    "unhex",
-    "week_of_month",
-    "week_of_year",
-    "week_of_year_with_year",
-    "weekday",
-    "year",
-    "month",
-    "day",
-    "day_of_week",
-    "day_of_month",
-    "day_of_year",
-    "trunc",
-    "max_date",
-    "variance",
-    "variance_if",
-    "add",
-    "add_years",
-    "sub_months",
-    "convert_timezone",
-    "extract_date_with_format",
-    "join",
-    "nullifempty",
-    "sentence_case",
-    "regexreplace",
-    "replace_regex",
-    "toString",
-    "mid",
-    "sha",
-}
+CURATED_FORMULA_PATTERNS = [
+    re.compile(r"^trim\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^trim\(lower\(`[^`]+`\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(upper\(`[^`]+`\)\)$", re.IGNORECASE),
+    re.compile(r"^upper\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^lower\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^proper\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^trim\(proper\(`[^`]+`\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(substr\(`[^`]+`,\s*\d+(?:\s*,\s*\d+)?\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(substring\(`[^`]+`,\s*\d+(?:\s*,\s*\d+)?\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(substring_index\(`[^`]+`,\s*['\"][^'\"]+['\"],\s*-?\d+\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(split\(`[^`]+`,\s*['\"][^'\"]+['\"]\)\[\d+\]\)$", re.IGNORECASE),
+    re.compile(r"^trim\(replace\(`[^`]+`,\s*['\"].*?['\"],\s*['\"].*?['\"]\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(regexp_replace\(`[^`]+`,\s*['\"].*?['\"],\s*['\"].*?['\"]\)\)$", re.IGNORECASE | re.DOTALL),
+    re.compile(r"^trim\(concat\(`[^`]+`,\s*`[^`]+`\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(concat\(['\"].*?['\"],\s*`[^`]+`\)\)$", re.IGNORECASE | re.DOTALL),
+    re.compile(r"^trim\(concat_ws\(\s*['\"].*?['\"],\s*`[^`]+`\s*,\s*`[^`]+`\s*\)\)$", re.IGNORECASE | re.DOTALL),
+    re.compile(r"^truncate_char\(`[^`]+`,\s*(?:\d+|['\"][^'\"]+['\"])\)$", re.IGNORECASE),
+    re.compile(r"^truncate_words\(`[^`]+`(?:,\s*\d+)?\)$", re.IGNORECASE),
+    re.compile(r"^unhex\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^unbase64\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^unix_timestamp\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^trunc\(`[^`]+`,\s*['\"][^'\"]+['\"]\)$", re.IGNORECASE),
+    re.compile(r"^week_of_month\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^week_of_year\(`[^`]+`(?:,\s*\d+\s*,\s*\d+)?\)$", re.IGNORECASE),
+    re.compile(r"^week_of_year_with_year\(`[^`]+`(?:,\s*\d+\s*,\s*\d+)?\)$", re.IGNORECASE),
+    re.compile(r"^weekday\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^year\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^month\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^year\(`[^`]+`\)\s*\*\s*100\s*\+\s*month\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^year\(`[^`]+`\)\s*\|\|\s*['\"].*?['\"]\s*\|\|\s*add\(\d+,\s*(?:day_of_year|month|week_of_year)\(`[^`]+`\)\)$", re.IGNORECASE | re.DOTALL),
+    re.compile(r"^variance\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^variance_if\(`[^`]+`,\s*.+\)$", re.IGNORECASE | re.DOTALL),
+    re.compile(r"^max_date\(`[^`]+`\)$", re.IGNORECASE),
+    re.compile(r"^trim\(max_date\(`[^`]+`\)\)$", re.IGNORECASE),
+    re.compile(r"^trim\(left\(`[^`]+`,\s*locate\(['\"].*?['\"],\s*`[^`]+`\)\)\)$", re.IGNORECASE | re.DOTALL),
+    re.compile(r"^trim\(replace\(replace\(replace\(`[^`]+`,\s*['\"].*?['\"],\s*['\"].*?['\"]\),\s*['\"].*?['\"],\s*['\"].*?['\"]\),\s*['\"].*?['\"],\s*['\"].*?['\"]\)\)$", re.IGNORECASE | re.DOTALL),
+]
 
 POST_EXEC = {
     "inferrer": {
@@ -148,15 +120,17 @@ DS_OPTIONS = {
 
 
 def referenced_columns(formula: str) -> list[str]:
-    """Ordered unique backtick-quoted column refs in a formula."""
     seen: dict[str, None] = {}
     for col in COLUMN_REF_RE.findall(formula or ""):
         seen.setdefault(col, None)
     return list(seen)
 
 
-def normalize_whitespace(text: str) -> str:
-    return re.sub(r"\s+", " ", text).strip()
+def normalize_formula(formula: str) -> str:
+    formula = formula.replace("\u00A0", " ")
+    formula = ADD_FORMULA_PREFIX_RE.sub("", formula.lstrip(), count=1)
+    formula = re.sub(r"\s+", " ", formula).strip()
+    return formula
 
 
 def balanced(formula: str) -> bool:
@@ -195,43 +169,8 @@ def balanced(formula: str) -> bool:
     return not stack and not in_single and not in_double and not in_backtick
 
 
-def has_empty_function_call(formula: str) -> bool:
-    return bool(re.search(r"\b(?:upper|lower|trim|year|month|weekday|week_of_month|week_of_year|unhex)\s*\(\s*\)", formula, re.IGNORECASE))
-
-
-def has_supported_shape(formula: str) -> bool:
-    stripped = formula.strip()
-    if not stripped:
-        return False
-    if BAD_TOKEN_RE.search(stripped):
-        return False
-    if has_empty_function_call(stripped):
-        return False
-    if not balanced(stripped):
-        return False
-
-    refs = referenced_columns(stripped)
-    fn_names = {
-        name.lower()
-        for name in re.findall(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*\(", stripped)
-    }
-    if any(name not in SAFE_FUNCTION_NAMES for name in fn_names):
-        return False
-
-    if not refs and not fn_names:
-        if ONLY_LITERAL_TEXT_RE.fullmatch(stripped):
-            return False
-
-    bad_patterns = [
-        r"\bwearpump\.com\b",
-        r"^\s*wwweee\s*$",
-        r"^\s*\{[^}]+\}\s*$",
-        r"\bInterop\s+`",
-        r"\bwhen\s*\([^)]*\)\s*otherwise\s*\(",
-        r"\byear\s*\([^)]*\)month\s*\(",
-        r"\bweek_of_year_with_year\s*\(`[^`]+`\s*\d",
-    ]
-    return not any(re.search(p, stripped, re.IGNORECASE | re.MULTILINE) for p in bad_patterns)
+def formula_matches_curated_patterns(formula: str) -> bool:
+    return any(p.fullmatch(formula) for p in CURATED_FORMULA_PATTERNS)
 
 
 def extract_input_columns(rules: list[dict]) -> list[str]:
@@ -284,7 +223,8 @@ def topo_sort_rules(rules: list[dict]) -> list[dict]:
         return True
 
     for i in range(len(rules)):
-        visit(i)
+        if not visit(i):
+            return []
     return out
 
 
@@ -302,20 +242,30 @@ def clean_rule(corpus_rule: dict) -> dict | None:
     if not isinstance(as_name, str) or not as_name.strip():
         return None
 
-    formula = formula.replace("\u00A0", " ")
-    formula = ADD_FORMULA_PREFIX_RE.sub("", formula.lstrip(), count=1)
-    formula = formula.strip()
+    formula = normalize_formula(formula)
     if not formula:
+        return None
+    if BAD_SCRIPT_TOKEN_RE.search(formula):
         return None
     if NONDETERMINISTIC_FN_RE.search(formula):
         return None
-    if not has_supported_shape(formula):
+    if not balanced(formula):
+        return None
+    if not formula_matches_curated_patterns(formula):
         return None
 
     out_params: dict[str, Any] = {"formula": formula, "as": as_name.strip()}
-    for k in ("type", "groupBy", "orderBy", "index"):
-        if k in params:
-            out_params[k] = params[k]
+    rule_type = params.get("type")
+    if rule_type == "window":
+        group_by = params.get("groupBy") or []
+        order_by = params.get("orderBy") or []
+        if not isinstance(group_by, list) or not group_by:
+            return None
+        if not isinstance(order_by, list) or not order_by:
+            return None
+        out_params["type"] = "window"
+        out_params["groupBy"] = group_by
+        out_params["orderBy"] = order_by
     return {"name": "derive", "params": out_params}
 
 
@@ -351,8 +301,8 @@ def sample_value_for_column(name: str, row_idx: int) -> str:
     if any(token in lower for token in ("date", "time", "year", "month", "day")):
         vals = ["2024-01-15", "2024-02-20", "2024-03-25", "2024-04-30"]
         return vals[row_idx % len(vals)]
-    if any(token in lower for token in ("email",)):
-        vals = ["a@example.com", "b@example.com", "c@example.com", "d@example.com"]
+    if "email" in lower:
+        vals = ["alpha@example.com", "beta@example.com", "gamma@example.com", "delta@example.com"]
         return vals[row_idx % len(vals)]
     if any(token in lower for token in ("phone", "tel", "mobile")):
         vals = ["1234567890", "9876543210", "5550001111", "8001112222"]
@@ -362,6 +312,9 @@ def sample_value_for_column(name: str, row_idx: int) -> str:
         return vals[row_idx % len(vals)]
     if any(token in lower for token in ("price", "amount", "value", "qty", "count", "id", "number")):
         vals = ["1", "20", "300", "4000"]
+        return vals[row_idx % len(vals)]
+    if any(token in lower for token in ("name", "city", "state", "country", "region", "address", "street")):
+        vals = ["Alpha", "Beta", "Gamma", "Delta"]
         return vals[row_idx % len(vals)]
     return SAMPLE_VALUES[row_idx % len(SAMPLE_VALUES)]
 
@@ -390,8 +343,6 @@ def write_case(
 
     sorted_rules = topo_sort_rules(rules)
     if len(sorted_rules) != len(rules):
-        return False
-    if len(sorted_rules) != 20 and len(sorted_rules) != len(rules):
         return False
 
     case_dir.mkdir(parents=True, exist_ok=True)
@@ -431,10 +382,7 @@ def stream_corpus(path: Path) -> Iterable[dict]:
             cleaned = clean_rule(rule)
             if cleaned is None:
                 continue
-            key = (
-                normalize_whitespace(cleaned["params"]["formula"]),
-                cleaned["params"]["as"],
-            )
+            key = (cleaned["params"]["formula"], cleaned["params"]["as"])
             if key in seen:
                 continue
             seen.add(key)
@@ -460,7 +408,7 @@ def main(argv: list[str] | None = None) -> int:
     if not args.input.is_file():
         sys.exit(f"Input CSV not found: {args.input}")
     if args.rules_per_case != 20:
-        sys.exit("This generator now enforces exactly 20 valid rules per case; pass --rules-per-case 20")
+        sys.exit("This generator enforces exactly 20 valid rules per case; pass --rules-per-case 20")
     if args.num_cases < 0:
         sys.exit("--num-cases must be >= 0")
 
@@ -515,7 +463,7 @@ def main(argv: list[str] | None = None) -> int:
                 break
 
     print(
-        f"consumed {consumed} valid distinct rules → {created} cases created"
+        f"consumed {consumed} curated valid rules → {created} cases created"
         + (f", {skipped_existing} existing skipped" if skipped_existing else "")
         + (f", {skipped_invalid_batch} invalid batches dropped" if skipped_invalid_batch else "")
         + "."
