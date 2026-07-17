@@ -1,16 +1,16 @@
 {
   "name": "Join",
   "params": {
-    "type": "outerexclude",
+    "type": "rightexclude",
     "withDS": [
       {
-        "dsName": "prescriptions.csv",
+        "dsName": "readings.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/prescriptions.csv",
+              "path": "file://resources/readings.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,17 +20,17 @@
     ],
     "keys": [
       {
-        "cols": ["DS.patient_id", "DS1.patient_id"],
+        "cols": ["DS.sensor_id", "DS1.sensor_id"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "patient_id", "cols": ["DS.patient_id"] },
-      { "as": "name",       "cols": ["DS.name"] },
-      { "as": "drug",       "cols": ["DS1.drug"] },
-      { "as": "dosage",     "cols": ["DS1.dosage"] }
+      { "as": "sensor_id",   "cols": ["DS1.sensor_id"] },
+      { "as": "reading_ts",  "cols": ["DS1.reading_ts"] },
+      { "as": "value",       "cols": ["DS1.value"] },
+      { "as": "unit",        "cols": ["DS1.unit"] }
     ],
     "intCols": false
   }

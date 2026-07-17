@@ -1,0 +1,6 @@
+order_id,return_date,reason,refund_amount
+O-1003,2024-01-15,damaged,89.99
+O-1006,2024-01-20,wrong_item,45.00
+O-1009,2024-01-22,not_needed,120.00
+O-2000,2024-01-25,damaged,55.00
+O-2001,2024-01-26,wrong_item,30.00

@@ -1,13 +1,9 @@
-country_code,country_name,continent,gdp_usd_bn
-US,United States,Americas,25462
-GB,United Kingdom,Europe,3071
-DE,Germany,Europe,4072
-FR,France,Europe,2782
-JP,Japan,Asia,4231
-CN,China,Asia,17963
-IN,India,Asia,3385
-BR,Brazil,Americas,1920
-CA,Canada,Americas,2140
-AU,Australia,Oceania,1700
-NG,Nigeria,Africa,477
-ZA,South Africa,Africa,418
+patient_id,name,dob,blood_type,ward
+P001,Alice Smith,1985-04-12,A+,Cardiology
+P002,Bob Jones,1972-09-23,B-,Orthopedics
+P003,Charlie Brown,1990-07-01,O+,Neurology
+P004,Diana Wilson,1968-11-30,AB+,Cardiology
+P005,Eve Davis,2001-02-14,A-,General
+P006,Frank Miller,1955-06-05,B+,Oncology
+P007,Grace Moore,1988-12-20,O-,Neurology
+P008,Hank Taylor,1993-03-09,A+,General

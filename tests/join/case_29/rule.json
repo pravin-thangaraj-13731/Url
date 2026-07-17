@@ -1,16 +1,16 @@
 {
   "name": "Join",
   "params": {
-    "type": "leftexclude",
+    "type": "right",
     "withDS": [
       {
-        "dsName": "trade_partners.csv",
+        "dsName": "prescriptions.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/trade_partners.csv",
+              "path": "file://resources/prescriptions.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,17 +20,19 @@
     ],
     "keys": [
       {
-        "cols": ["DS.country_code", "DS1.country_code"],
+        "cols": ["DS.patient_id", "DS1.patient_id"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "country_code",  "cols": ["DS.country_code"] },
-      { "as": "country_name",  "cols": ["DS.country_name"] },
-      { "as": "continent",     "cols": ["DS.continent"] },
-      { "as": "gdp_usd_bn",    "cols": ["DS.gdp_usd_bn"] }
+      { "as": "patient_id",      "cols": ["DS.patient_id"] },
+      { "as": "name",             "cols": ["DS.name"] },
+      { "as": "ward",             "cols": ["DS.ward"] },
+      { "as": "drug",             "cols": ["DS1.drug"] },
+      { "as": "dosage",           "cols": ["DS1.dosage"] },
+      { "as": "prescribed_date",  "cols": ["DS1.prescribed_date"] }
     ],
     "intCols": false
   }

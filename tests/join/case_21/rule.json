@@ -4,13 +4,13 @@
     "type": "inner",
     "withDS": [
       {
-        "dsName": "sku_catalog.csv",
+        "dsName": "returns.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/sku_catalog.csv",
+              "path": "file://resources/returns.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,19 +20,19 @@
     ],
     "keys": [
       {
-        "cols": ["DS.sku", "DS1.sku"],
+        "cols": ["DS.order_id", "DS1.order_id"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "order_id",    "cols": ["DS.order_id"] },
-      { "as": "sku",         "cols": ["DS.sku"] },
-      { "as": "qty",         "cols": ["DS.qty"] },
-      { "as": "description", "cols": ["DS1.description"] },
-      { "as": "category",    "cols": ["DS1.category"] }
+      { "as": "order_id",      "cols": ["DS.order_id"] },
+      { "as": "customer_id",   "cols": ["DS.customer_id"] },
+      { "as": "status",        "cols": ["DS.status"] },
+      { "as": "return_date",   "cols": ["DS1.return_date"] },
+      { "as": "refund_amount", "cols": ["DS1.refund_amount"] }
     ],
-    "intCols": false
+    "intCols": true
   }
 }

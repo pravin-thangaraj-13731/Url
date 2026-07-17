@@ -1,7 +1,7 @@
 {
   "name": "Join",
   "params": {
-    "type": "inner",
+    "type": "leftexclude",
     "withDS": [
       {
         "dsName": "discounts.csv",
@@ -22,16 +22,15 @@
       {
         "cols": ["DS.product_code", "DS1.product_code"],
         "type": "equal",
-        "iCase": true,
-        "iSpace": true
+        "iCase": false,
+        "iSpace": false
       }
     ],
     "colList": [
       { "as": "product_code",  "cols": ["DS.product_code"] },
       { "as": "product_name",  "cols": ["DS.product_name"] },
-      { "as": "list_price",    "cols": ["DS.list_price"] },
-      { "as": "discount_pct",  "cols": ["DS1.discount_pct"] },
-      { "as": "promo_code",    "cols": ["DS1.promo_code"] }
+      { "as": "category",      "cols": ["DS.category"] },
+      { "as": "unit_price",    "cols": ["DS.unit_price"] }
     ],
     "intCols": false
   }

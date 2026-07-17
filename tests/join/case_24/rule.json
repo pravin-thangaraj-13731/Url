@@ -4,13 +4,13 @@
     "type": "left",
     "withDS": [
       {
-        "dsName": "gate_assignments.csv",
+        "dsName": "delays.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/gate_assignments.csv",
+              "path": "file://resources/delays.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,19 +20,20 @@
     ],
     "keys": [
       {
-        "cols": ["DS.flight_no", "DS1.flight_no"],
+        "cols": ["DS.flight_id", "DS1.flight_id"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "flight_no",  "cols": ["DS.flight_no"] },
-      { "as": "origin",     "cols": ["DS.origin"] },
-      { "as": "destination","cols": ["DS.destination"] },
-      { "as": "gate",       "cols": ["DS1.gate"] },
-      { "as": "status",     "cols": ["DS1.status"] }
+      { "as": "flight_id",      "cols": ["DS.flight_id"] },
+      { "as": "origin",         "cols": ["DS.origin"] },
+      { "as": "destination",    "cols": ["DS.destination"] },
+      { "as": "airline",        "cols": ["DS.airline"] },
+      { "as": "delay_minutes",  "cols": ["DS1.delay_minutes"] },
+      { "as": "reason",         "cols": ["DS1.reason"] }
     ],
-    "intCols": false
+    "intCols": true
   }
 }

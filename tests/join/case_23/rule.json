@@ -1,16 +1,16 @@
 {
   "name": "Join",
   "params": {
-    "type": "inner",
+    "type": "outer",
     "withDS": [
       {
-        "dsName": "policies.csv",
+        "dsName": "inventory.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/policies.csv",
+              "path": "file://resources/inventory.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,18 +20,18 @@
     ],
     "keys": [
       {
-        "cols": ["DS.policy_id", "DS1.policy_id"],
+        "cols": ["DS.isbn", "DS1.isbn"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "claim_id",      "cols": ["DS.claim_id"] },
-      { "as": "policy_id",     "cols": ["DS.policy_id"] },
-      { "as": "claimed_amount","cols": ["DS.claimed_amount"] },
-      { "as": "holder_name",   "cols": ["DS1.holder_name"] },
-      { "as": "policy_type",   "cols": ["DS1.policy_type"] }
+      { "as": "isbn",               "cols": ["DS.isbn"] },
+      { "as": "title",              "cols": ["DS.title"] },
+      { "as": "genre",              "cols": ["DS.genre"] },
+      { "as": "copies_available",   "cols": ["DS1.copies_available"] },
+      { "as": "shelf_location",     "cols": ["DS1.shelf_location"] }
     ],
     "intCols": false
   }

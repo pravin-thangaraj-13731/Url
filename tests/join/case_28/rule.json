@@ -1,16 +1,16 @@
 {
   "name": "Join",
   "params": {
-    "type": "right",
+    "type": "inner",
     "withDS": [
       {
-        "dsName": "login_audit.csv",
+        "dsName": "permissions.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/login_audit.csv",
+              "path": "file://resources/permissions.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,19 +20,18 @@
     ],
     "keys": [
       {
-        "cols": ["DS.user_id", "DS1.user_id"],
+        "cols": ["DS.username", "DS1.username"],
         "type": "equal",
-        "iCase": false,
-        "iSpace": false
+        "iCase": true,
+        "iSpace": true
       }
     ],
     "colList": [
-      { "as": "user_id",    "cols": ["DS.user_id"] },
-      { "as": "username",   "cols": ["DS.username"] },
-      { "as": "role",       "cols": ["DS.role"] },
-      { "as": "login_time", "cols": ["DS1.login_time"] },
-      { "as": "ip_address", "cols": ["DS1.ip_address"] },
-      { "as": "success",    "cols": ["DS1.success"] }
+      { "as": "user_id",  "cols": ["DS.user_id"] },
+      { "as": "username", "cols": ["DS.username"] },
+      { "as": "role",     "cols": ["DS.role"] },
+      { "as": "resource", "cols": ["DS1.resource"] },
+      { "as": "action",   "cols": ["DS1.action"] }
     ],
     "intCols": true
   }

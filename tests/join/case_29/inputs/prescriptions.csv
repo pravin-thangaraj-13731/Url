@@ -1,0 +1,8 @@
+patient_id,drug,dosage,prescribed_date,doctor
+P001,Aspirin,100mg,2024-01-10,Dr.Chen
+P001,Lisinopril,10mg,2024-01-10,Dr.Chen
+P003,Atorvastatin,20mg,2024-01-11,Dr.Patel
+P005,Metformin,500mg,2024-01-12,Dr.Kim
+P007,Levetiracetam,500mg,2024-01-13,Dr.Patel
+P010,Amoxicillin,250mg,2024-01-14,Dr.Lee
+P011,Ibuprofen,400mg,2024-01-15,Dr.Chen

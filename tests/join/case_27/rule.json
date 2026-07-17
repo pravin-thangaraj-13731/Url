@@ -1,16 +1,16 @@
 {
   "name": "Join",
   "params": {
-    "type": "inner",
+    "type": "outerexclude",
     "withDS": [
       {
-        "dsName": "thresholds.csv",
+        "dsName": "amendments.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/thresholds.csv",
+              "path": "file://resources/amendments.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,25 +20,17 @@
     ],
     "keys": [
       {
-        "cols": ["DS.location", "DS1.location"],
-        "type": "equal",
-        "iCase": false,
-        "iSpace": false
-      },
-      {
-        "cols": ["DS.unit", "DS1.metric"],
+        "cols": ["DS.Contract_ID", "DS1.Contract_ID"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "sensor_id",     "cols": ["DS.sensor_id"] },
-      { "as": "location",      "cols": ["DS.location"] },
-      { "as": "reading_value", "cols": ["DS.reading_value"] },
-      { "as": "min_val",       "cols": ["DS1.min_val"] },
-      { "as": "max_val",       "cols": ["DS1.max_val"] },
-      { "as": "alert_level",   "cols": ["DS1.alert_level"] }
+      { "as": "Contract_ID",     "cols": ["DS.Contract_ID"] },
+      { "as": "client_name",     "cols": ["DS.client_name"] },
+      { "as": "amendment_date",  "cols": ["DS1.amendment_date"] },
+      { "as": "amendment_type",  "cols": ["DS1.amendment_type"] }
     ],
     "intCols": false
   }

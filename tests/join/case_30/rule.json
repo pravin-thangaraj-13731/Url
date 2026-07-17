@@ -4,13 +4,13 @@
     "type": "outer",
     "withDS": [
       {
-        "dsName": "registrations.csv",
+        "dsName": "performance.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/registrations.csv",
+              "path": "file://resources/performance.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,18 +20,19 @@
     ],
     "keys": [
       {
-        "cols": ["DS.event_id", "DS1.event_id"],
+        "cols": ["DS.campaign_id", "DS1.campaign_id"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "event_id",   "cols": ["DS.event_id"] },
-      { "as": "event_name", "cols": ["DS.event_name"] },
-      { "as": "venue_id",   "cols": ["DS.venue_id"] },
-      { "as": "attendee_id","cols": ["DS1.attendee_id"] },
-      { "as": "paid",       "cols": ["DS1.paid"] }
+      { "as": "campaign_id",   "cols": ["DS.campaign_id"] },
+      { "as": "campaign_name", "cols": ["DS.campaign_name"] },
+      { "as": "channel",       "cols": ["DS.channel"] },
+      { "as": "budget",        "cols": ["DS.budget"] },
+      { "as": "spend",         "cols": ["DS1.spend"] },
+      { "as": "conversions",   "cols": ["DS1.conversions"] }
     ],
     "intCols": false
   }

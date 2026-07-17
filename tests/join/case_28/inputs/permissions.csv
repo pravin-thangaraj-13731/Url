@@ -1,0 +1,9 @@
+username,resource,action,granted
+admin_alice,reports,read,true
+admin_alice,reports,write,true
+charlie_mod,posts,moderate,true
+diana_admin,users,manage,true
+eve_viewer,dashboard,read,true
+GRACE_ADMIN,settings,manage,true
+grace_admin,reports,read,true
+XXX_UNKNOWN,dashboard,read,true

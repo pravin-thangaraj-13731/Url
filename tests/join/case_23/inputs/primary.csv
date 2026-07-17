@@ -1,12 +1,11 @@
-claim_id,policy_id,claim_date,claimed_amount,status
-CLM-001,POL-A1,2024-01-05,12000,pending
-CLM-002,POL-A2,2024-01-06,4500,approved
-CLM-003,POL-A3,2024-01-07,87000,pending
-CLM-004,POL-A4,2024-01-08,330,rejected
-CLM-005,POL-A1,2024-01-09,2200,approved
-CLM-006,POL-A5,2024-01-10,15000,pending
-CLM-007,POL-A6,2024-01-11,9000,approved
-CLM-008,POL-A7,2024-01-12,500,pending
-CLM-009,POL-A8,2024-01-13,22000,rejected
-CLM-010,POL-A9,2024-01-14,750,approved
-CLM-011,POL-A10,2024-01-15,3100,pending
+isbn,title,author,genre,pub_year
+978-001,Clean Code,Robert Martin,Tech,2008
+978-002,The Pragmatic Programmer,Hunt & Thomas,Tech,1999
+978-003,Design Patterns,Gang of Four,Tech,1994
+978-004,Dune,Frank Herbert,SciFi,1965
+978-005,Foundation,Isaac Asimov,SciFi,1951
+978-006,Neuromancer,William Gibson,SciFi,1984
+978-007,1984,George Orwell,Fiction,1949
+978-008,Brave New World,Aldous Huxley,Fiction,1932
+978-009,Thinking Fast and Slow,Daniel Kahneman,NonFiction,2011
+978-010,Sapiens,Yuval Harari,NonFiction,2011

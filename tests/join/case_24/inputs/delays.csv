@@ -1,0 +1,8 @@
+flight_id,delay_minutes,reason,reported_by
+FL-001,15,weather,ATC
+FL-003,45,mechanical,Crew
+FL-005,0,,ATC
+FL-007,120,weather,ATC
+FL-009,30,staffing,Crew
+FL-011,60,weather,ATC
+FL-012,25,mechanical,Crew

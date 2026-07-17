@@ -4,13 +4,13 @@
     "type": "left",
     "withDS": [
       {
-        "dsName": "managers.csv",
+        "dsName": "reviews.csv",
         "dsInfo": {
           "dsID": "DS1",
           "alias": "DS1",
           "iInfo": {
             "data": {
-              "path": "file://resources/managers.csv",
+              "path": "file://resources/reviews.csv",
               "options": { "header": "true" }
             }
           },
@@ -20,18 +20,20 @@
     ],
     "keys": [
       {
-        "cols": ["DS.manager_id", "DS1.manager_id"],
+        "cols": ["DS.employee_id", "DS1.employee_id"],
         "type": "equal",
         "iCase": false,
         "iSpace": false
       }
     ],
     "colList": [
-      { "as": "employee_id",   "cols": ["DS.employee_id"] },
-      { "as": "name",          "cols": ["DS.name"] },
-      { "as": "manager_name",  "cols": ["DS1.manager_name"] },
-      { "as": "dept",          "cols": ["DS1.dept"] }
+      { "as": "employee_id", "cols": ["DS.employee_id"] },
+      { "as": "name",        "cols": ["DS.name"] },
+      { "as": "dept",        "cols": ["DS.dept"] },
+      { "as": "salary",      "cols": ["DS.salary"] },
+      { "as": "score",       "cols": ["DS1.score"] },
+      { "as": "reviewer",    "cols": ["DS1.reviewer"] }
     ],
-    "intCols": true
+    "intCols": false
   }
 }

@@ -1,0 +1,9 @@
+employee_id,review_year,score,reviewer
+E001,2023,4.5,Manager_A
+E002,2023,3.8,Manager_B
+E003,2023,4.2,Manager_A
+E005,2023,4.9,Manager_A
+E007,2023,4.0,Manager_C
+E009,2023,4.3,Manager_C
+E011,2023,3.5,Manager_D
+E012,2023,4.1,Manager_D
