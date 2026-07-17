@@ -1,0 +1,44 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "weather.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/weather.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.city", "DS1.city"],
+        "type": "equal",
+        "iCase": true,
+        "iSpace": true
+      },
+      {
+        "cols": ["DS.country", "DS1.country"],
+        "type": "equal",
+        "iCase": true,
+        "iSpace": true
+      }
+    ],
+    "colList": [
+      { "as": "city",          "cols": ["DS.city"] },
+      { "as": "country",       "cols": ["DS.country"] },
+      { "as": "population",    "cols": ["DS.population"] },
+      { "as": "avg_temp_c",    "cols": ["DS1.avg_temp_c"] },
+      { "as": "annual_rain",   "cols": ["DS1.annual_rain_mm"] }
+    ],
+    "intCols": false
+  }
+}

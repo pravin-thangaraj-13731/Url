@@ -1,0 +1,11 @@
+store_id,store_name,city,region
+S01,Downtown Store,New York,East
+S02,Uptown Store,New York,East
+S03,West Side,Chicago,Midwest
+S04,North Mall,Chicago,Midwest
+S05,Sunset Strip,Los Angeles,West
+S06,Beachfront,Los Angeles,West
+S07,South Park,Houston,South
+S08,Heights,Houston,South
+S09,Eastgate,Dallas,South
+S10,Westgate,Dallas,South

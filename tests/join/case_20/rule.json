@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "right",
+    "withDS": [
+      {
+        "dsName": "resolutions.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/resolutions.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.ticket_id", "DS1.ticket_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "ticket_id",    "cols": ["DS.ticket_id"] },
+      { "as": "category",     "cols": ["DS.category"] },
+      { "as": "priority",     "cols": ["DS.priority"] },
+      { "as": "resolved_date","cols": ["DS1.resolved_date"] },
+      { "as": "resolver",     "cols": ["DS1.resolver"] }
+    ],
+    "intCols": false
+  }
+}

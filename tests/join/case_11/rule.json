@@ -1,0 +1,36 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "orders.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/orders.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.id", "DS1.id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "id",       "cols": ["DS.id"] },
+      { "as": "name",     "cols": ["DS.name"] },
+      { "as": "amount",   "cols": ["DS1.amount"] }
+    ],
+    "intCols": true
+  }
+}

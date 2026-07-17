@@ -1,0 +1,7 @@
+ticket_id,resolved_date,resolver,resolution_time_hrs
+TKT-001,2024-01-04,DevA,48
+TKT-003,2024-01-05,DevB,24
+TKT-005,2024-01-08,DevC,72
+TKT-009,2024-01-11,DevA,36
+TKT-011,2024-01-12,DevD,12
+TKT-012,2024-01-13,DevB,96

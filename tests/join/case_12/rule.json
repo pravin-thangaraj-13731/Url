@@ -1,0 +1,37 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "left",
+    "withDS": [
+      {
+        "dsName": "dept_lookup.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/dept_lookup.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.dept_code", "DS1.dept_code"],
+        "type": "equal",
+        "iCase": true,
+        "iSpace": true
+      }
+    ],
+    "colList": [
+      { "as": "emp_id",    "cols": ["DS.emp_id"] },
+      { "as": "full_name", "cols": ["DS.first_name"] },
+      { "as": "dept_name", "cols": ["DS1.dept_name"] },
+      { "as": "location",  "cols": ["DS1.location"] }
+    ],
+    "intCols": false
+  }
+}

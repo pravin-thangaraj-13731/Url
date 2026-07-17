@@ -1,0 +1,11 @@
+city,  country  ,population,timezone
+New York,USA,8336817,EST
+Los Angeles, USA ,3979576,PST
+Chicago,USA,2693976,CST
+Houston,  USA  ,2320268,CST
+Phoenix,USA,1680992,MST
+London,UK,8982000,GMT
+Paris, France ,2148000,CET
+Berlin,Germany,3769000,CET
+Tokyo,Japan,13960000,JST
+Sydney, Australia ,5312000,AEDT

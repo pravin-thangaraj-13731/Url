@@ -1,0 +1,7 @@
+id,order_ref,amount,channel
+1,REF-A1,1250.00,online
+3,REF-A2,430.00,store
+5,REF-A3,875.50,online
+7,REF-A4,2200.00,store
+9,REF-A5,315.00,online
+11,REF-A6,990.00,store

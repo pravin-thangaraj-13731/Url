@@ -1,0 +1,11 @@
+sku,product_name,warehouse,qty_on_hand
+SKU-001,Widget A,WH-EAST,250
+SKU-002,Widget B,WH-WEST,180
+SKU-003,Gadget X,WH-EAST,90
+SKU-004,Gadget Y,WH-NORTH,320
+SKU-005,Doohickey,WH-SOUTH,75
+SKU-006,Thingamajig,WH-EAST,410
+SKU-007,Gizmo,WH-WEST,55
+SKU-008,Contraption,WH-NORTH,130
+SKU-009,Doodad,WH-SOUTH,200
+SKU-010,Whatchamacallit,WH-EAST,88

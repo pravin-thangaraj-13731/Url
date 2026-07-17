@@ -1,0 +1,37 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "leftexclude",
+    "withDS": [
+      {
+        "dsName": "sales_data.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/sales_data.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.store_id", "DS1.store_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "store_id",   "cols": ["DS.store_id"] },
+      { "as": "store_name", "cols": ["DS.store_name"] },
+      { "as": "city",       "cols": ["DS.city"] },
+      { "as": "region",     "cols": ["DS.region"] }
+    ],
+    "intCols": false
+  }
+}

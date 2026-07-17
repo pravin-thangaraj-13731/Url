@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "left",
+    "withDS": [
+      {
+        "dsName": "timesheets.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/timesheets.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.project_id", "DS1.project_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "project_id",   "cols": ["DS.project_id"] },
+      { "as": "project_name", "cols": ["DS.project_name"] },
+      { "as": "budget",       "cols": ["DS.budget"] },
+      { "as": "employee_id",  "cols": ["DS1.employee_id"] },
+      { "as": "hours_logged", "cols": ["DS1.hours_logged"] }
+    ],
+    "intCols": true
+  }
+}

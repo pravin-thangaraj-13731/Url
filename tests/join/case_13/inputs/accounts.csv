@@ -1,0 +1,8 @@
+account_id,owner,status,credit_limit
+ACC-1,Alice,active,10000
+ACC-2,Bob,active,5000
+ACC-3,Charlie,suspended,8000
+ACC-4,Diana,active,3000
+ACC-5,Eve,active,15000
+ACC-10,Frank,inactive,2000
+ACC-11,Grace,active,7500

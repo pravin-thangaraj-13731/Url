@@ -1,0 +1,9 @@
+project_id,project_name,dept,budget,start_date
+PRJ-001,Alpha Launch,Engineering,500000,2024-01-01
+PRJ-002,Beta Platform,Marketing,120000,2024-02-01
+PRJ-003,Gamma Infra,Engineering,850000,2024-03-01
+PRJ-004,Delta CRM,Sales,200000,2024-04-01
+PRJ-005,Epsilon Data,Engineering,430000,2024-05-01
+PRJ-006,Zeta Cloud,IT,375000,2024-06-01
+PRJ-007,Eta Mobile,Engineering,290000,2024-07-01
+PRJ-008,Theta AI,Research,600000,2024-08-01

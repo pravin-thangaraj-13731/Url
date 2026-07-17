@@ -1,0 +1,9 @@
+po_id,vendor_id,amount,status,po_date
+PO-001,V01,15000,approved,2024-01-10
+PO-002,V02,8500,pending,2024-01-11
+PO-003,V03,22000,approved,2024-01-12
+PO-004,V07,5000,pending,2024-01-13
+PO-005,V08,9800,approved,2024-01-14
+PO-006,V09,3400,cancelled,2024-01-15
+PO-007,V10,17500,approved,2024-01-16
+PO-008,V11,6700,pending,2024-01-17

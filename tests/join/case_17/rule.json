@@ -1,0 +1,37 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "outerexclude",
+    "withDS": [
+      {
+        "dsName": "courses.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/courses.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.student_id", "DS1.student_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "student_id", "cols": ["DS.student_id"] },
+      { "as": "name",       "cols": ["DS.name"] },
+      { "as": "course_id",  "cols": ["DS1.course_id"] },
+      { "as": "grade",      "cols": ["DS1.grade"] }
+    ],
+    "intCols": false
+  }
+}

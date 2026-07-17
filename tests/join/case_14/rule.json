@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "outer",
+    "withDS": [
+      {
+        "dsName": "sales_summary.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/sales_summary.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.sku", "DS1.sku"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "sku",           "cols": ["DS.sku"] },
+      { "as": "product_name",  "cols": ["DS.product_name"] },
+      { "as": "qty_on_hand",   "cols": ["DS.qty_on_hand"] },
+      { "as": "units_sold",    "cols": ["DS1.units_sold"] },
+      { "as": "revenue",       "cols": ["DS1.revenue"] }
+    ],
+    "intCols": false
+  }
+}
