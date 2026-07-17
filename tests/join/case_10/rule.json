@@ -1,0 +1,43 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "targets.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/targets.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.region", "DS1.region"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      },
+      {
+        "cols": ["DS.year", "DS1.year"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "region",  "cols": ["DS.region"] },
+      { "as": "year",    "cols": ["DS.year"] },
+      { "as": "sales",   "cols": ["DS.sales"] },
+      { "as": "target",  "cols": ["DS1.target"] }
+    ],
+    "intCols": false
+  }
+}

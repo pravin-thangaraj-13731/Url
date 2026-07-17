@@ -1,0 +1,7 @@
+customer_id,order_id,amount
+1,ORD-X1,50.00
+3,ORD-X2,150.00
+5,ORD-X3,250.00
+9,ORD-X4,350.00
+10,ORD-X5,450.00
+11,ORD-X6,550.00

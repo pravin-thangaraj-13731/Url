@@ -1,0 +1,11 @@
+customer_id,order_id,amount,notes
+1,ORD-001,100.00,rush
+2,ORD-002,200.00,normal
+3,ORD-003,300.00,rush
+4,ORD-004,400.00,normal
+5,ORD-005,500.00,rush
+6,ORD-006,600.00,normal
+7,ORD-007,700.00,rush
+10,ORD-008,800.00,normal
+11,ORD-009,900.00,rush
+12,ORD-010,1000.00,normal

@@ -1,0 +1,37 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "right",
+    "withDS": [
+      {
+        "dsName": "orders.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/orders.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.customer_id", "DS1.customer_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "customer_id", "cols": ["DS.customer_id"] },
+      { "as": "name",        "cols": ["DS.name"] },
+      { "as": "order_id",    "cols": ["DS1.order_id"] },
+      { "as": "amount",      "cols": ["DS1.amount"] }
+    ],
+    "intCols": false
+  }
+}

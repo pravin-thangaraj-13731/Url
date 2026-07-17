@@ -1,0 +1,9 @@
+region,year,target,manager
+North,2023,52000,Manager_A
+South,2023,31000,Manager_B
+East,2023,44000,Manager_C
+West,2023,65000,Manager_D
+North,2022,50000,Manager_A
+South,2022,29000,Manager_B
+East,2022,40000,Manager_C
+West,2022,60000,Manager_D

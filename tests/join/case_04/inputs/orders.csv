@@ -1,0 +1,13 @@
+customer_id,order_id,amount,product
+1,ORD-001,120.00,Widget
+2,ORD-002,340.00,Gadget
+3,ORD-003,89.00,Widget
+4,ORD-004,560.00,Doohickey
+5,ORD-005,230.00,Thingamajig
+6,ORD-006,780.00,Gadget
+7,ORD-007,45.00,Widget
+8,ORD-008,900.00,Doohickey
+9,ORD-009,310.00,Thingamajig
+10,ORD-010,67.00,Widget
+11,ORD-011,420.00,Gadget
+12,ORD-012,155.00,Widget

@@ -1,0 +1,19 @@
+customer_id,name,city,status
+1,Alice,New York,active
+2,Bob,Los Angeles,inactive
+3,Charlie,Chicago,active
+4,Diana,Houston,active
+5,Eve,Phoenix,inactive
+6,Frank,Philadelphia,active
+7,Grace,San Antonio,active
+8,Hank,San Diego,inactive
+9,Ivy,Dallas,active
+10,Jack,San Jose,active
+11,Karen,Austin,inactive
+12,Leo,Jacksonville,active
+13,Mia,Fort Worth,active
+14,Ned,Columbus,inactive
+15,Olivia,Charlotte,active
+20,Xena,Memphis,active
+21,Yuri,Louisville,inactive
+99,Zoe,Portland,active

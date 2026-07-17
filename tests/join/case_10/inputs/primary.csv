@@ -1,0 +1,11 @@
+region,year,sales,rep
+North,2023,50000,Alice
+South,2023,30000,Bob
+East,2023,45000,Charlie
+West,2023,60000,Diana
+North,2022,55000,Eve
+South,2022,28000,Frank
+East,2022,41000,Grace
+West,2022,63000,Hank
+North,2021,48000,Ivy
+East,2021,39000,Jack

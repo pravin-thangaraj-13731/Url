@@ -1,0 +1,36 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "thresholds.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/thresholds.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.region", "DS1.region"],
+        "type": "not_equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "region",     "cols": ["DS.region"] },
+      { "as": "sales",      "cols": ["DS.sales"] },
+      { "as": "ds1_region", "cols": ["DS1.region"] }
+    ],
+    "intCols": false
+  }
+}

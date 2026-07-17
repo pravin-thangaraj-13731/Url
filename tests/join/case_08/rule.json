@@ -1,0 +1,36 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "products.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/products.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.product_name", "DS1.product_name"],
+        "type": "equal",
+        "iCase": true,
+        "iSpace": true
+      }
+    ],
+    "colList": [
+      { "as": "product_name", "cols": ["DS.product_name"] },
+      { "as": "sales",        "cols": ["DS.sales"] },
+      { "as": "price",        "cols": ["DS1.price"] }
+    ],
+    "intCols": false
+  }
+}
