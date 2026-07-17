@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "outer",
+    "withDS": [
+      {
+        "dsName": "registrations.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/registrations.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.event_id", "DS1.event_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "event_id",   "cols": ["DS.event_id"] },
+      { "as": "event_name", "cols": ["DS.event_name"] },
+      { "as": "venue_id",   "cols": ["DS.venue_id"] },
+      { "as": "attendee_id","cols": ["DS1.attendee_id"] },
+      { "as": "paid",       "cols": ["DS1.paid"] }
+    ],
+    "intCols": false
+  }
+}

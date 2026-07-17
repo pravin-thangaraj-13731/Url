@@ -1,0 +1,9 @@
+product_code,  product_name  ,supplier,list_price
+PC-001,  Laptop Pro  ,SupplierA,1299.99
+PC-002,Desktop Mini,SupplierB,699.99
+PC-003,  Monitor 27",SupplierA,349.99
+PC-004,Keyboard Mech,SupplierC,129.99
+PC-005,Mouse Wireless,SupplierB,49.99
+PC-006,  Webcam HD  ,SupplierC,89.99
+PC-007,Headset Pro,SupplierA,199.99
+PC-008,USB Hub,SupplierD,39.99

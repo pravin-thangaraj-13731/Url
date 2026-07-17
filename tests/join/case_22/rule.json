@@ -1,0 +1,37 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "left",
+    "withDS": [
+      {
+        "dsName": "managers.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/managers.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.manager_id", "DS1.manager_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "employee_id",   "cols": ["DS.employee_id"] },
+      { "as": "name",          "cols": ["DS.name"] },
+      { "as": "manager_name",  "cols": ["DS1.manager_name"] },
+      { "as": "dept",          "cols": ["DS1.dept"] }
+    ],
+    "intCols": true
+  }
+}

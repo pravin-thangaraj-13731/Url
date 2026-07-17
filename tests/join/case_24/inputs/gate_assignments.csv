@@ -1,0 +1,8 @@
+flight_no,gate,terminal,status
+AA101,B22,Terminal 2,on_time
+BA202,A10,Terminal 1,delayed
+DL303,C5,Terminal 3,on_time
+UA404,D12,Terminal 4,cancelled
+AA606,B31,Terminal 2,on_time
+XX999,Z1,Terminal 9,on_time
+XX998,Z2,Terminal 9,delayed

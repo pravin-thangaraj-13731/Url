@@ -1,0 +1,10 @@
+employee_id,name,manager_id,level
+E001,Alice,E010,3
+E002,Bob,E010,3
+E003,Charlie,E011,3
+E004,Diana,E010,3
+E005,Eve,E011,3
+E006,Frank,E012,3
+E007,Grace,E012,3
+E008,Hank,E013,3
+E009,Ivy,E013,3

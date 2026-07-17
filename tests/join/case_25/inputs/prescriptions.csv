@@ -1,0 +1,8 @@
+patient_id,drug,dosage,prescribed_date,prescribing_doc
+P001,Aspirin,100mg,2024-01-10,Dr_Smith
+P002,Ibuprofen,400mg,2024-01-11,Dr_Jones
+P001,Metformin,500mg,2024-01-12,Dr_Smith
+P003,Amoxicillin,250mg,2024-01-13,Dr_Brown
+P005,Lisinopril,10mg,2024-01-14,Dr_Wilson
+P999,UnknownDrug,999mg,2024-01-15,Dr_Ghost
+P998,AnotherDrug,50mg,2024-01-16,Dr_Unknown

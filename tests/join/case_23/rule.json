@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "policies.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/policies.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.policy_id", "DS1.policy_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "claim_id",      "cols": ["DS.claim_id"] },
+      { "as": "policy_id",     "cols": ["DS.policy_id"] },
+      { "as": "claimed_amount","cols": ["DS.claimed_amount"] },
+      { "as": "holder_name",   "cols": ["DS1.holder_name"] },
+      { "as": "policy_type",   "cols": ["DS1.policy_type"] }
+    ],
+    "intCols": false
+  }
+}

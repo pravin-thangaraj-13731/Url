@@ -1,0 +1,45 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "thresholds.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/thresholds.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.location", "DS1.location"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      },
+      {
+        "cols": ["DS.unit", "DS1.metric"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "sensor_id",     "cols": ["DS.sensor_id"] },
+      { "as": "location",      "cols": ["DS.location"] },
+      { "as": "reading_value", "cols": ["DS.reading_value"] },
+      { "as": "min_val",       "cols": ["DS1.min_val"] },
+      { "as": "max_val",       "cols": ["DS1.max_val"] },
+      { "as": "alert_level",   "cols": ["DS1.alert_level"] }
+    ],
+    "intCols": false
+  }
+}

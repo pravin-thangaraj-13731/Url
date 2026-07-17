@@ -1,0 +1,7 @@
+location,metric,min_val,max_val,alert_level
+WH-A,celsius,18.0,26.0,warn
+WH-A,percent,30.0,70.0,critical
+WH-B,celsius,17.0,25.0,warn
+WH-C,celsius,16.0,24.0,critical
+WH-C,percent,20.0,80.0,warn
+WH-E,celsius,15.0,30.0,info

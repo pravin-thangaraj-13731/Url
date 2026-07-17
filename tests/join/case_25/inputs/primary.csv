@@ -1,0 +1,11 @@
+patient_id,name,dob,blood_type,ward
+P001,Alice,1985-03-12,A+,Cardiology
+P002,Bob,1972-07-22,O-,Neurology
+P003,Charlie,1990-11-05,B+,Orthopedics
+P004,Diana,1968-01-30,AB+,Cardiology
+P005,Eve,2001-06-18,A-,General
+P006,Frank,1955-09-14,O+,Oncology
+P007,Grace,1998-04-25,B-,General
+P008,Hank,1980-12-01,A+,Neurology
+P009,Ivy,1993-08-17,AB-,Cardiology
+P010,Jack,1976-02-28,O+,Orthopedics

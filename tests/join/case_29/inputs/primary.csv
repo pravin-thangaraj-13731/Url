@@ -1,0 +1,13 @@
+country_code,country_name,continent,gdp_usd_bn
+US,United States,Americas,25462
+GB,United Kingdom,Europe,3071
+DE,Germany,Europe,4072
+FR,France,Europe,2782
+JP,Japan,Asia,4231
+CN,China,Asia,17963
+IN,India,Asia,3385
+BR,Brazil,Americas,1920
+CA,Canada,Americas,2140
+AU,Australia,Oceania,1700
+NG,Nigeria,Africa,477
+ZA,South Africa,Africa,418

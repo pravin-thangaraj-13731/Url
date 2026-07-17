@@ -1,0 +1,7 @@
+product_code,discount_pct,promo_code,valid_until
+pc-001,15,SAVE15,2024-06-30
+pc-002,10,SAVE10,2024-05-31
+pc-003,20,SAVE20,2024-07-31
+PC-004,5,SAVE5,2024-04-30
+pc-007,12,SAVE12,2024-06-15
+pc-009,8,SAVE8,2024-08-31

@@ -1,0 +1,11 @@
+country_code,partner_code,trade_volume_bn,trade_type
+US,CN,690,import
+US,CA,420,export
+GB,DE,180,export
+DE,FR,220,export
+JP,CN,340,import
+CN,US,540,export
+IN,US,130,export
+BR,CN,150,import
+XX,YY,50,import
+ZZ,WW,30,export

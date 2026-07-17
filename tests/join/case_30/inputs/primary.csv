@@ -1,0 +1,8 @@
+event_id,event_name,venue_id,event_date,capacity
+EVT-01,Tech Summit,VEN-A,2024-03-01,500
+EVT-02,Art Expo,VEN-B,2024-03-05,200
+EVT-03,Food Fair,VEN-C,2024-03-10,1000
+EVT-04,Music Fest,VEN-A,2024-03-15,800
+EVT-05,Book Fair,VEN-D,2024-03-20,300
+EVT-06,Science Day,VEN-B,2024-03-25,400
+EVT-07,Sports Meet,VEN-E,2024-03-30,1500

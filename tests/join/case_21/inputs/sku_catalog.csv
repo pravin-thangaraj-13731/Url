@@ -1,0 +1,7 @@
+sku,description,category,weight_kg
+SKU-A,Widget Alpha,Electronics,0.3
+SKU-B,Gadget Beta,Electronics,0.8
+SKU-C,Doohickey Gamma,Parts,0.1
+SKU-D,Thingamajig Delta,Accessories,1.2
+SKU-F,Gizmo Zeta,Electronics,0.5
+SKU-G,Contraption Eta,Parts,0.2

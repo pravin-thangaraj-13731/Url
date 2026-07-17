@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "left",
+    "withDS": [
+      {
+        "dsName": "gate_assignments.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/gate_assignments.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.flight_no", "DS1.flight_no"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "flight_no",  "cols": ["DS.flight_no"] },
+      { "as": "origin",     "cols": ["DS.origin"] },
+      { "as": "destination","cols": ["DS.destination"] },
+      { "as": "gate",       "cols": ["DS1.gate"] },
+      { "as": "status",     "cols": ["DS1.status"] }
+    ],
+    "intCols": false
+  }
+}

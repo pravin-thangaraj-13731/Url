@@ -1,0 +1,37 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "outerexclude",
+    "withDS": [
+      {
+        "dsName": "prescriptions.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/prescriptions.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.patient_id", "DS1.patient_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "patient_id", "cols": ["DS.patient_id"] },
+      { "as": "name",       "cols": ["DS.name"] },
+      { "as": "drug",       "cols": ["DS1.drug"] },
+      { "as": "dosage",     "cols": ["DS1.dosage"] }
+    ],
+    "intCols": false
+  }
+}

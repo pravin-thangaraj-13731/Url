@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "discounts.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/discounts.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.product_code", "DS1.product_code"],
+        "type": "equal",
+        "iCase": true,
+        "iSpace": true
+      }
+    ],
+    "colList": [
+      { "as": "product_code",  "cols": ["DS.product_code"] },
+      { "as": "product_name",  "cols": ["DS.product_name"] },
+      { "as": "list_price",    "cols": ["DS.list_price"] },
+      { "as": "discount_pct",  "cols": ["DS1.discount_pct"] },
+      { "as": "promo_code",    "cols": ["DS1.promo_code"] }
+    ],
+    "intCols": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "sku_catalog.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/sku_catalog.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.sku", "DS1.sku"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "order_id",    "cols": ["DS.order_id"] },
+      { "as": "sku",         "cols": ["DS.sku"] },
+      { "as": "qty",         "cols": ["DS.qty"] },
+      { "as": "description", "cols": ["DS1.description"] },
+      { "as": "category",    "cols": ["DS1.category"] }
+    ],
+    "intCols": false
+  }
+}

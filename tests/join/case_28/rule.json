@@ -1,0 +1,39 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "right",
+    "withDS": [
+      {
+        "dsName": "login_audit.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/login_audit.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.user_id", "DS1.user_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "user_id",    "cols": ["DS.user_id"] },
+      { "as": "username",   "cols": ["DS.username"] },
+      { "as": "role",       "cols": ["DS.role"] },
+      { "as": "login_time", "cols": ["DS1.login_time"] },
+      { "as": "ip_address", "cols": ["DS1.ip_address"] },
+      { "as": "success",    "cols": ["DS1.success"] }
+    ],
+    "intCols": true
+  }
+}
