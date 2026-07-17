@@ -1,0 +1,101 @@
+product_id,product_name,category,unit_price,brand
+P001,Laptop Pro 15,Electronics,1299.99,TechBrand
+P002, Wireless Mouse ,Electronics,29.99,ClickCo
+P003,Mechanical Keyboard,Electronics,149.99,TypeMaster
+P004,Office Chair ,Furniture,399.99,ComfortPlus
+P005,Standing Desk,Furniture,699.99,ErgoDesk
+P006,Notebook Set,Stationery,12.99,WriteWell
+P007,Ballpoint Pens,Stationery,4.99,WriteWell
+P008,Coffee Machine,Appliances,89.99,BrewMaster
+P009,Water Purifier,Appliances,199.99,ClearDrop
+P010,Headphones,Electronics,249.99,SoundWave
+P011,Monitor 27in,Electronics,449.99,ViewMax
+P012,USB Hub,Electronics,34.99,PortPro
+P013,Webcam HD,Electronics,79.99,ViewMax
+P014, Ergonomic Mouse ,Electronics,59.99,ClickCo
+P015,Desk Lamp,Furniture,49.99,BrightSpace
+P016,Bookshelf,Furniture,199.99,WoodWorks
+P017,File Cabinet,Furniture,299.99,OfficePro
+P018,Stapler,Stationery,8.99,BindIt
+P019,Scissors,Stationery,3.49,CutRight
+P020,Tape Dispenser,Stationery,5.99,BindIt
+P021,Printer,Electronics,349.99,PrintMax
+P022,Scanner,Electronics,279.99,ScanPro
+P023,Projector,Electronics,899.99,ViewMax
+P024,Whiteboard,Furniture,89.99,WriteSpace
+P025,Marker Set,Stationery,9.99,ColorMark
+P026,Laptop Stand,Electronics,59.99,TechBrand
+P027,Cable Manager,Electronics,14.99,PortPro
+P028,Desk Organizer,Stationery,19.99,OfficePro
+P029,Mouse Pad XL,Electronics,24.99,ClickCo
+P030,  Phone Stand  ,Electronics,12.99,TechBrand
+P031,Shredder,Appliances,129.99,SecureCut
+P032,Label Maker,Stationery,49.99,BindIt
+P033,Binding Machine,Stationery,79.99,BindIt
+P034,Laminator,Appliances,59.99,SealPro
+P035,Paper Cutter,Stationery,89.99,CutRight
+P036,Chair Mat,Furniture,39.99,ComfortPlus
+P037,Monitor Arm,Furniture,129.99,ErgoDesk
+P038,Keyboard Tray,Furniture,79.99,ErgoDesk
+P039,Footrest,Furniture,44.99,ComfortPlus
+P040,Lumbar Support,Furniture,34.99,ComfortPlus
+P041,Laptop Bag,Electronics,89.99,TechBrand
+P042,Backpack,Electronics,119.99,TechBrand
+P043,Cable Lock,Electronics,19.99,SecureCut
+P044,Power Bank,Electronics,49.99,ChargeUp
+P045,Charging Pad,Electronics,39.99,ChargeUp
+P046,Screen Cleaner,Electronics,9.99,ViewMax
+P047,Privacy Screen,Electronics,44.99,ViewMax
+P048,Anti-Glare Filter,Electronics,34.99,ViewMax
+P049,Surge Protector,Electronics,29.99,PowerSafe
+P050,Extension Cord,Electronics,19.99,PowerSafe
+P051,Smart Speaker,Electronics,99.99,SoundWave
+P052,Desk Fan,Appliances,39.99,CoolAir
+P053,Air Purifier,Appliances,149.99,ClearDrop
+P054,Humidifier,Appliances,79.99,ClearDrop
+P055,Electric Kettle,Appliances,49.99,BrewMaster
+P056,Microwave,Appliances,159.99,BrewMaster
+P057,Mini Fridge,Appliances,199.99,CoolAir
+P058,Toaster,Appliances,34.99,BrewMaster
+P059,Blender,Appliances,59.99,BrewMaster
+P060,Coffee Grinder,Appliances,44.99,BrewMaster
+P061,Notebook 200pg,Stationery,6.99,WriteWell
+P062,Sticky Notes,Stationery,3.99,WriteWell
+P063,Index Cards,Stationery,2.49,WriteWell
+P064,Binder A4,Stationery,7.99,BindIt
+P065,Divider Set,Stationery,4.99,BindIt
+P066,Highlighters,Stationery,5.99,ColorMark
+P067,Correction Tape,Stationery,3.99,WriteWell
+P068,Ruler 30cm,Stationery,1.99,WriteWell
+P069,Calculator,Stationery,12.99,OfficePro
+P070,Staple Remover,Stationery,2.99,BindIt
+P071,Drawer Unit,Furniture,149.99,WoodWorks
+P072,Storage Box,Furniture,29.99,WoodWorks
+P073,Magazine Holder,Furniture,14.99,WoodWorks
+P074,Coat Rack,Furniture,49.99,WoodWorks
+P075,  Trash Can  ,Furniture,24.99,OfficePro
+P076,Recycling Bin,Furniture,19.99,OfficePro
+P077,Plant Pot,Furniture,12.99,GreenSpace
+P078,Desk Plant,Furniture,24.99,GreenSpace
+P079,Picture Frame,Furniture,9.99,WoodWorks
+P080,Clock,Furniture,19.99,TimePro
+P081,Wireless Charger,Electronics,29.99,ChargeUp
+P082,Smart Plug,Electronics,14.99,PowerSafe
+P083,LED Strip,Electronics,24.99,BrightSpace
+P084,Smart Bulb,Electronics,12.99,BrightSpace
+P085,Bluetooth Speaker,Electronics,79.99,SoundWave
+P086,Noise Cancel Headset,Electronics,299.99,SoundWave
+P087,VR Headset,Electronics,399.99,TechBrand
+P088,Drawing Tablet,Electronics,199.99,TechBrand
+P089,Stream Deck,Electronics,149.99,TechBrand
+P090,Video Capture Card,Electronics,89.99,TechBrand
+P091,NAS Drive,Electronics,399.99,StoragePro
+P092,External SSD,Electronics,129.99,StoragePro
+P093,Flash Drive 128G,Electronics,24.99,StoragePro
+P094,Memory Card,Electronics,19.99,StoragePro
+P095,Card Reader,Electronics,14.99,StoragePro
+P096,Ethernet Cable,Electronics,9.99,NetPro
+P097,Network Switch,Electronics,79.99,NetPro
+P098,WiFi Extender,Electronics,49.99,NetPro
+P099,Router,Electronics,129.99,NetPro
+P100,Modem,Electronics,89.99,NetPro

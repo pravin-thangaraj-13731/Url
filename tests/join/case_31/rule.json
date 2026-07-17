@@ -1,0 +1,38 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "inner",
+    "withDS": [
+      {
+        "dsName": "inventory.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/inventory.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.product_id", "DS1.product_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "product_id",   "cols": ["DS.product_id"] },
+      { "as": "product_name", "cols": ["DS.product_name"] },
+      { "as": "unit_price",   "cols": ["DS.unit_price"] },
+      { "as": "warehouse",    "cols": ["DS1.warehouse"] },
+      { "as": "qty_in_stock", "cols": ["DS1.qty_in_stock"] }
+    ],
+    "intCols": false
+  }
+}

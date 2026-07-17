@@ -1,0 +1,46 @@
+{
+  "name": "Join",
+  "params": {
+    "type": "left",
+    "withDS": [
+      {
+        "dsName": "bonuses.csv",
+        "dsInfo": {
+          "dsID": "DS1",
+          "alias": "DS1",
+          "iInfo": {
+            "data": {
+              "path": "file://resources/bonuses.csv",
+              "options": { "header": "true" }
+            }
+          },
+          "iType": "source"
+        }
+      }
+    ],
+    "keys": [
+      {
+        "cols": ["DS.employee_id", "DS1.employee_id"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      },
+      {
+        "cols": ["DS.year", "DS1.year"],
+        "type": "equal",
+        "iCase": false,
+        "iSpace": false
+      }
+    ],
+    "colList": [
+      { "as": "employee_id",   "cols": ["DS.employee_id"] },
+      { "as": "name",          "cols": ["DS.name"] },
+      { "as": "dept",          "cols": ["DS.dept"] },
+      { "as": "year",          "cols": ["DS.year"] },
+      { "as": "base_salary",   "cols": ["DS.base_salary"] },
+      { "as": "bonus_amount",  "cols": ["DS1.bonus_amount"] },
+      { "as": "reason",        "cols": ["DS1.reason"] }
+    ],
+    "intCols": true
+  }
+}
